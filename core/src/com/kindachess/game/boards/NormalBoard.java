@@ -6,8 +6,6 @@ import com.kindachess.game.squares.AbstractGridSquare;
 import com.kindachess.game.squares.AbstractSquare;
 import com.kindachess.game.squares.NormalSquare;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;

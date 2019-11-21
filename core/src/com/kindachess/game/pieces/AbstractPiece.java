@@ -29,8 +29,8 @@ public abstract class AbstractPiece {
         return new ArrayList<>(moveTypes);
     }
 
-    public List<AbstractSquare> getMoves() throws InvalidBoardTypeException {
-        Set<AbstractSquare> moves = new HashSet<>();
+    public List<Move> getMoves() throws InvalidBoardTypeException {
+        Set<Move> moves = new HashSet<>();
         for (AbstractMoveScanner moveType : moveTypes) {
             moves.addAll(moveType.getMoves(this));
         }
@@ -38,9 +38,6 @@ public abstract class AbstractPiece {
     }
 
     public boolean moveTo(AbstractSquare square) throws InvalidBoardTypeException {
-        if (!getMoves().contains(square)) {
-            return false;
-        }
         moveHistory.add(new Move(this.square.getBoard().getGame().getTurnCount(), this.square, square));
         this.square = square;
         return true;

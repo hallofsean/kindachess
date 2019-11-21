@@ -1,4 +1,4 @@
 package com.kindachess.game.games;
 
-public class NormalGameType {
+public class NormalGameType extends AbstractGameType {
 }
