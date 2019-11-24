@@ -1,5 +1,6 @@
 package com.kindachess.game.boards;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.kindachess.game.exceptions.IncorrectSquareTypeException;
 import com.kindachess.game.exceptions.SquareNotOnBoardException;
 import com.kindachess.game.games.AbstractGameType;
@@ -23,6 +24,8 @@ public abstract class AbstractBoard {
     public abstract List<AbstractSquare> getNeighbours(AbstractSquare square) throws IncorrectSquareTypeException;
 
     public abstract List<AbstractSquare> getSquares();
+
+    public abstract void render(SpriteBatch batch);
 
     public void addPiece(AbstractSquare square, AbstractPiece piece) throws SquareNotOnBoardException {
         if (!getSquares().contains(square)) {

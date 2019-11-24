@@ -1,6 +1,6 @@
 package com.kindachess.game.exceptions;
 
-public class IncorrectSquareTypeException extends Exception {
+public class IncorrectSquareTypeException extends KindaChessException {
 
     /**
      *

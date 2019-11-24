@@ -1,6 +1,6 @@
 package com.kindachess.game.exceptions;
 
-public class SquareNotOnBoardException extends Exception {
+public class SquareNotOnBoardException extends KindaChessException {
 
     /**
      *

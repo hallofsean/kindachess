@@ -1,13 +1,15 @@
 package com.kindachess.game.pieces;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.Texture;
 import com.kindachess.game.exceptions.InvalidBoardTypeException;
 import com.kindachess.game.moves.AbstractMoveScanner;
 import com.kindachess.game.squares.AbstractSquare;
 import com.kindachess.game.util.Move;
 import com.kindachess.game.util.Team;
+import com.kindachess.game.TextureRegistry;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public abstract class AbstractPiece {
@@ -15,10 +17,12 @@ public abstract class AbstractPiece {
     private AbstractSquare square;
     private Team team;
     private CopyOnWriteArrayList<Move> moveHistory;
+    private Texture texture;
 
-    public AbstractPiece(AbstractSquare startSquare, Team team) {
+    public AbstractPiece(AbstractSquare startSquare, Team team, String textureName) {
         square = startSquare;
         this.team = team;
+        texture = TextureRegistry.getInstance().getTexture(textureName);
     }
 
     public void addMoveType(AbstractMoveScanner moveType) {
@@ -57,5 +61,9 @@ public abstract class AbstractPiece {
 
     public Move getLastMove() {
         return moveHistory.get(moveHistory.size()-1);
+    }
+
+    public void setTexture(String textureName) {
+        texture = TextureRegistry.getInstance().getTexture(textureName);
     }
 }

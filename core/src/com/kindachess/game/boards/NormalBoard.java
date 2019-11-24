@@ -1,5 +1,6 @@
 package com.kindachess.game.boards;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.kindachess.game.exceptions.IncorrectSquareTypeException;
 import com.kindachess.game.games.AbstractGameType;
 import com.kindachess.game.squares.AbstractGridSquare;
@@ -93,5 +94,18 @@ public class NormalBoard extends AbstractBoard implements GridBoard {
         }
 
         return grid[square.getX() + 1][square.getY()];
+    }
+
+    @Override
+    public void render(SpriteBatch batch) {
+        int i = 0;
+        int j = 0;
+        for (NormalSquare[] row: grid) {
+            j = 0;
+            for (NormalSquare square: row) {
+                square.render(batch, i, j++);
+            }            
+            i++;
+        }
     }
 }

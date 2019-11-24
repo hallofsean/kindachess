@@ -1,5 +1,6 @@
 package com.kindachess.game.squares;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.kindachess.game.boards.AbstractBoard;
 import com.kindachess.game.exceptions.IncorrectSquareTypeException;
 import com.kindachess.game.exceptions.InvalidBoardTypeException;
@@ -20,6 +21,8 @@ public abstract class AbstractSquare {
 
     @Override
     public abstract int hashCode();
+
+    public abstract void render(SpriteBatch batch, int x, int y);
 
     public boolean isObstructed() {
         return board.isObstructed(this);

@@ -49,6 +49,10 @@ public class TextureRegistry {
         addTexture("WKn", "pieces/placeholder/WKn.png"); // White Knight
         addTexture("WB", "pieces/placeholder/WB.png"); // White Bishop
         addTexture("WR", "pieces/placeholder/WR.png"); // White Rook
+
+        // Squares
+        addTexture("WSquare", "squares/white.png");
+        addTexture("BSquare", "squares/black.png");
     }
 
     private void addTexture(String name, String location) {

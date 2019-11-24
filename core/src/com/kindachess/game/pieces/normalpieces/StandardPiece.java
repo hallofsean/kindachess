@@ -8,7 +8,7 @@ import com.kindachess.game.util.Team;
  * A regular piece with no special behaviour
  */
 public class StandardPiece extends AbstractPiece {
-    StandardPiece(AbstractSquare square, Team team) {
-        super(square, team);
+    StandardPiece(AbstractSquare square, Team team, String textureName) {
+        super(square, team, textureName);
     }
 }
