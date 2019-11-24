@@ -2,13 +2,14 @@ package com.kindachess.game.pieces.normalpieces;
 
 import com.kindachess.game.moves.normalmoves.*;
 import com.kindachess.game.squares.AbstractSquare;
+import com.kindachess.game.util.Team;
 
 /**
  * Builder design pattern for StandardPiece
  */
 public class StandardPieceBuilder {
-    public static StandardPiece create(StandardPieceType type, AbstractSquare square) {
-        StandardPiece piece = new StandardPiece(square);
+    public static StandardPiece create(StandardPieceType type, AbstractSquare square, Team team) {
+        StandardPiece piece = new StandardPiece(square, team);
 
         switch (type) {
             case QUEEN:

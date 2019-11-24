@@ -1,13 +1,15 @@
 package com.kindachess.game.boards;
 
 import com.kindachess.game.exceptions.IncorrectSquareTypeException;
+import com.kindachess.game.exceptions.SquareNotOnBoardException;
+import com.kindachess.game.games.AbstractGameType;
+import com.kindachess.game.games.NormalGameType;
 import com.kindachess.game.pieces.AbstractPiece;
-import com.kindachess.game.pieces.normalpieces.KingPiece;
-import com.kindachess.game.pieces.normalpieces.StandardPiece;
 import com.kindachess.game.pieces.normalpieces.StandardPieceBuilder;
 import com.kindachess.game.pieces.normalpieces.StandardPieceType;
 import com.kindachess.game.squares.AbstractSquare;
-import com.kindachess.game.squares.NormalSquare;
+import com.kindachess.game.util.Team;
+import com.kindachess.game.boards.NormalBoard;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,30 +20,37 @@ public class NormalBoardTest {
 
     @Before
     public void setup() throws IncorrectSquareTypeException {
-        board = new NormalBoard();
+        AbstractGameType gameType = new NormalGameType();
+        board = new NormalBoard(gameType);
     }
 
     @Test
-    public void addPiece() {
+    public void addPiece() throws SquareNotOnBoardException {
         AbstractSquare square = board.getSquares().get(0);
-        AbstractPiece piece = StandardPieceBuilder.create(StandardPieceType.ROOK, square);
-        board.addPiece(piece);
+        Team team = Team.BLACK;
+        AbstractPiece piece = StandardPieceBuilder.create(StandardPieceType.ROOK, square, team);
+        board.addPiece(square, piece);
         assertEquals(piece, board.getPieces().get(0));
     }
 
     @Test
-    public void getPieces() {
-        AbstractSquare square = board.getSquares().get(0);
-        AbstractPiece piece1 = StandardPieceBuilder.create(StandardPieceType.ROOK, square);
-        AbstractPiece piece2 = StandardPieceBuilder.create(StandardPieceType.ROOK, square);
-        AbstractPiece piece3 = StandardPieceBuilder.create(StandardPieceType.ROOK, square);
-        board.addPiece(piece1);
-        board.addPiece(piece2);
-        board.addPiece(piece3);
+    public void getPieces() throws SquareNotOnBoardException {
+        AbstractSquare square1 = board.getSquares().get(0);
+        AbstractSquare square2 = board.getSquares().get(1);
+        AbstractSquare square3 = board.getSquares().get(2);
 
-        assertEquals(piece1, board.getPieces().get(0));
-        assertEquals(piece2, board.getPieces().get(1));
-        assertEquals(piece3, board.getPieces().get(2));
+        AbstractPiece piece1 = StandardPieceBuilder.create(StandardPieceType.ROOK, square1, Team.WHITE);
+        AbstractPiece piece2 = StandardPieceBuilder.create(StandardPieceType.ROOK, square2, Team.WHITE);
+        AbstractPiece piece3 = StandardPieceBuilder.create(StandardPieceType.ROOK, square3, Team.WHITE);
+        
+        board.addPiece(square1, piece1);
+        board.addPiece(square2, piece2);
+        board.addPiece(square3, piece3);
+
+        assertTrue("Piece 1 not on board", board.getPieces().contains(piece1));
+        assertTrue("Piece 2 not on board", board.getPieces().contains(piece2));
+        assertTrue("Piece 3 not on board", board.getPieces().contains(piece3));
+        assertEquals("Additional pieces on board", 3, board.getPieces().size());
     }
 
     @Test
