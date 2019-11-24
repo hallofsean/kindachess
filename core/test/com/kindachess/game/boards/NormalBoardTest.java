@@ -9,10 +9,12 @@ import com.kindachess.game.pieces.normalpieces.StandardPieceBuilder;
 import com.kindachess.game.pieces.normalpieces.StandardPieceType;
 import com.kindachess.game.squares.AbstractSquare;
 import com.kindachess.game.util.Team;
+import com.kindachess.game.TextureRegistry;
 import com.kindachess.game.boards.NormalBoard;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.mockito.Mockito.mock;
 import static org.junit.Assert.*;
 
 public class NormalBoardTest {
@@ -22,6 +24,7 @@ public class NormalBoardTest {
     public void setup() throws IncorrectSquareTypeException {
         AbstractGameType gameType = new NormalGameType();
         board = new NormalBoard(gameType);
+        TextureRegistry.setInstance(mock(TextureRegistry.class));
     }
 
     @Test
