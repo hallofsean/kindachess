@@ -6,6 +6,7 @@ import com.kindachess.game.pieces.AbstractPiece;
 import com.kindachess.game.pieces.normalpieces.PawnPiece;
 import com.kindachess.game.squares.AbstractGridSquare;
 import com.kindachess.game.squares.AbstractSquare;
+import com.kindachess.game.util.KillMove;
 import com.kindachess.game.util.Move;
 import com.kindachess.game.boards.NormalBoard;
 
@@ -20,6 +21,7 @@ public class EnPassantMoveScanner extends AbstractMoveScanner {
         if (!(startSquare.getBoard() instanceof NormalBoard)) {
             throw new InvalidBoardTypeException();
         }
+        int turn = startSquare.getBoard().getGame().getTurnCount();
 
         SingleForwardMoveScanner forwardMove = new SingleForwardMoveScanner();
 
@@ -33,12 +35,16 @@ public class EnPassantMoveScanner extends AbstractMoveScanner {
 
             if (left != null && left.getPiece() != null && left.getPiece() instanceof PawnPiece) {
                 Move lastMove = left.getPiece().getLastMove();
+                if (lastMove.getFrom() == forwardLeft) {
+                    moves.add(new KillMove(turn, startSquare, forwardLeft, left.getPiece()));
+                }
             }
 
-            if (forwardRight != null && !forwardRight.isObstructed() && right.getPiece() != null
-                    && right.getPiece().getTeam() != piece.getTeam()) {
-                Move move = new Move(forwardRight.getBoard().getGame().getTurnCount(), startSquare, forwardRight);
-                moves.add(move);
+            if (right != null && right.getPiece() != null && right.getPiece() instanceof PawnPiece) {
+                Move lastMove = right.getPiece().getLastMove();
+                if (lastMove.getFrom() == forwardRight) {
+                    moves.add(new KillMove(turn, startSquare, forwardRight, right.getPiece()));
+                }
             }
         }
 
