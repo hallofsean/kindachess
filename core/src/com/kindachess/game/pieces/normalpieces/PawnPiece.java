@@ -8,7 +8,7 @@ import com.kindachess.game.squares.AbstractSquare;
 import com.kindachess.game.util.Team;
 
 public class PawnPiece extends AbstractPiece {
-    PawnPiece(AbstractSquare square, Team team) {
+    public PawnPiece(AbstractSquare square, Team team) {
         super(square, team, (team == Team.WHITE) ? "WP" : "BP");
         addMoveType(new SingleForwardMoveScanner());
         addMoveType(new PawnAttackMoveScanner());

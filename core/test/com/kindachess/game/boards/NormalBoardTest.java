@@ -1,6 +1,6 @@
 package com.kindachess.game.boards;
 
-import com.kindachess.game.exceptions.IncorrectSquareTypeException;
+import com.kindachess.game.exceptions.KindaChessException;
 import com.kindachess.game.exceptions.SquareNotOnBoardException;
 import com.kindachess.game.games.AbstractGameType;
 import com.kindachess.game.games.NormalGameType;
@@ -21,10 +21,11 @@ public class NormalBoardTest {
     private NormalBoard board;
 
     @Before
-    public void setup() throws IncorrectSquareTypeException {
+    public void setup() throws KindaChessException {
+        TextureRegistry.setInstance(mock(TextureRegistry.class));
+
         AbstractGameType gameType = new NormalGameType();
         board = new NormalBoard(gameType);
-        TextureRegistry.setInstance(mock(TextureRegistry.class));
     }
 
     @Test
@@ -32,7 +33,7 @@ public class NormalBoardTest {
         AbstractSquare square = board.getSquares().get(0);
         Team team = Team.BLACK;
         AbstractPiece piece = StandardPieceBuilder.create(StandardPieceType.ROOK, square, team);
-        board.addPiece(square, piece);
+        board.addPiece(piece);
         assertEquals(piece, board.getPieces().get(0));
     }
 
@@ -46,9 +47,9 @@ public class NormalBoardTest {
         AbstractPiece piece2 = StandardPieceBuilder.create(StandardPieceType.ROOK, square2, Team.WHITE);
         AbstractPiece piece3 = StandardPieceBuilder.create(StandardPieceType.ROOK, square3, Team.WHITE);
         
-        board.addPiece(square1, piece1);
-        board.addPiece(square2, piece2);
-        board.addPiece(square3, piece3);
+        board.addPiece(piece1);
+        board.addPiece(piece2);
+        board.addPiece(piece3);
 
         assertTrue("Piece 1 not on board", board.getPieces().contains(piece1));
         assertTrue("Piece 2 not on board", board.getPieces().contains(piece2));

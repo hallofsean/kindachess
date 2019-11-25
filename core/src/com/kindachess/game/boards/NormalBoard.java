@@ -13,6 +13,7 @@ import java.util.List;
 
 public class NormalBoard extends AbstractBoard implements GridBoard {
     private NormalSquare[][] grid = new NormalSquare[8][8]; // 0,0 is top-left
+    public static final int SQUARE_SIZE = 50;
 
     public NormalBoard(AbstractGameType gameType) throws IncorrectSquareTypeException {
         super(gameType);
@@ -103,9 +104,18 @@ public class NormalBoard extends AbstractBoard implements GridBoard {
         for (NormalSquare[] row: grid) {
             j = 0;
             for (NormalSquare square: row) {
-                square.render(batch, i, j++);
+                square.render(batch, i, j, SQUARE_SIZE);
+                if (getPieceOnSquare(square) != null) {
+                    getPieceOnSquare(square).render(batch, i, j, SQUARE_SIZE);
+                }
+                j++;
             }            
             i++;
         }
+    }
+
+    @Override
+    public AbstractGridSquare getSquare(int x, int y) {
+        return grid[x][y];
     }
 }

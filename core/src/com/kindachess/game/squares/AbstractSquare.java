@@ -22,7 +22,7 @@ public abstract class AbstractSquare {
     @Override
     public abstract int hashCode();
 
-    public abstract void render(SpriteBatch batch, int x, int y);
+    public abstract void render(SpriteBatch batch, int x, int y, int size);
 
     public boolean isObstructed() {
         return board.isObstructed(this);

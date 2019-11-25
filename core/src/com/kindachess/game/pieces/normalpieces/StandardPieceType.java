@@ -7,6 +7,5 @@ public enum StandardPieceType {
     QUEEN,
     BISHOP,
     KNIGHT,
-    ROOK,
-    PAWN
+    ROOK
 }

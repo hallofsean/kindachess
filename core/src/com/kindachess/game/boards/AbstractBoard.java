@@ -27,11 +27,11 @@ public abstract class AbstractBoard {
 
     public abstract void render(SpriteBatch batch);
 
-    public void addPiece(AbstractSquare square, AbstractPiece piece) throws SquareNotOnBoardException {
-        if (!getSquares().contains(square)) {
+    public void addPiece(AbstractPiece piece) throws SquareNotOnBoardException {
+        if (!getSquares().contains(piece.getSquare())) {
             throw new SquareNotOnBoardException();
         }
-        pieces.put(square, piece);
+        pieces.put(piece.getSquare(), piece);
     }
 
     public List<AbstractPiece> getPieces() {

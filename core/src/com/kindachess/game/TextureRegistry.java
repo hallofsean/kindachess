@@ -5,10 +5,15 @@ import java.util.concurrent.ConcurrentHashMap;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Singleton for storing instance of all textures to ensure all instance can be changed at once and minimise memory usage.
  */
 public class TextureRegistry {
+    private static Logger LOGGER = LoggerFactory.getLogger(TextureRegistry.class);
+
     private static TextureRegistry instance;
     private ConcurrentHashMap<String, Texture> textures;
 
@@ -42,6 +47,7 @@ public class TextureRegistry {
         addTexture("BKn", "pieces/placeholder/BKn.png"); // Black Knight
         addTexture("BB", "pieces/placeholder/BB.png"); // Black Bishop
         addTexture("BR", "pieces/placeholder/BR.png"); // Black Rook
+        addTexture("BP", "pieces/placeholder/BP.png"); // Black Pawn
 
         //// White pieces
         addTexture("WK", "pieces/placeholder/WK.png"); // White King
@@ -49,6 +55,7 @@ public class TextureRegistry {
         addTexture("WKn", "pieces/placeholder/WKn.png"); // White Knight
         addTexture("WB", "pieces/placeholder/WB.png"); // White Bishop
         addTexture("WR", "pieces/placeholder/WR.png"); // White Rook
+        addTexture("WP", "pieces/placeholder/WP.png"); // White Pawn
 
         // Squares
         addTexture("WSquare", "squares/white.png");
@@ -60,6 +67,12 @@ public class TextureRegistry {
     }
 
     public Texture getTexture(String name) {
+        LOGGER.trace("Getting texture for {}", name);
+
+        if (!textures.containsKey(name)) {
+            LOGGER.info("No texture with name '{}''", name);
+        }
+
         return textures.get(name);
     }
 

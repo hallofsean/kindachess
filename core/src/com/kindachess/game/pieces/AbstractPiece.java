@@ -1,6 +1,6 @@
 package com.kindachess.game.pieces;
 
-import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.Texture;
 import com.kindachess.game.exceptions.InvalidBoardTypeException;
 import com.kindachess.game.moves.AbstractMoveScanner;
@@ -11,6 +11,8 @@ import com.kindachess.game.TextureRegistry;
 
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public abstract class AbstractPiece {
     private List<AbstractMoveScanner> moveTypes = new CopyOnWriteArrayList<>();
@@ -18,6 +20,8 @@ public abstract class AbstractPiece {
     private Team team;
     private CopyOnWriteArrayList<Move> moveHistory;
     private Texture texture;
+
+    private static Logger LOGGER = LoggerFactory.getLogger(AbstractPiece.class);
 
     public AbstractPiece(AbstractSquare startSquare, Team team, String textureName) {
         square = startSquare;
@@ -65,5 +69,10 @@ public abstract class AbstractPiece {
 
     public void setTexture(String textureName) {
         texture = TextureRegistry.getInstance().getTexture(textureName);
+    }
+
+    public void render(SpriteBatch batch, int x, int y, int size) {
+        LOGGER.trace("Rendering piece at ({}, {})", x*size, y*size);
+        batch.draw(texture, x*size, y*size, size, size);
     }
 }
