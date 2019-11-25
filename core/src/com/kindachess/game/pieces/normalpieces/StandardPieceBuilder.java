@@ -12,18 +12,18 @@ public class StandardPieceBuilder {
         StandardPiece piece = new StandardPiece(square, team, "BQ");
 
         switch (type) {
-            case QUEEN:
-                createQueen(piece);
-                break;
-            case BISHOP:
-                createBishop(piece);
-                break;
-            case KNIGHT:
-                createKnight(piece);
-                break;
-            case ROOK:
-                createRook(piece);
-                break;
+        case QUEEN:
+            createQueen(piece);
+            break;
+        case BISHOP:
+            createBishop(piece);
+            break;
+        case KNIGHT:
+            createKnight(piece);
+            break;
+        case ROOK:
+            createRook(piece);
+            break;
         }
 
         return piece;

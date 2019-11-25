@@ -4,7 +4,6 @@ import com.kindachess.game.exceptions.InvalidBoardTypeException;
 import com.kindachess.game.moves.AbstractMoveScanner;
 import com.kindachess.game.pieces.AbstractPiece;
 import com.kindachess.game.squares.AbstractGridSquare;
-import com.kindachess.game.squares.AbstractSquare;
 import com.kindachess.game.util.KillMove;
 import com.kindachess.game.util.Move;
 
@@ -23,14 +22,12 @@ public class PawnAttackMoveScanner extends AbstractMoveScanner {
             AbstractGridSquare forwardLeft = forwardSquare.getLeft();
             AbstractGridSquare forwardRight = forwardSquare.getRight();
 
-            if (forwardLeft != null
-                    && forwardLeft.getPiece() != null
+            if (forwardLeft != null && forwardLeft.getPiece() != null
                     && forwardLeft.getPiece().getTeam() != piece.getTeam()) {
                 moves.add(new KillMove(forward.getTurn(), forward.getFrom(), forwardLeft, forwardRight.getPiece()));
             }
 
-            if (forwardRight != null
-                    && forwardRight.getPiece() != null
+            if (forwardRight != null && forwardRight.getPiece() != null
                     && forwardRight.getPiece().getTeam() != piece.getTeam()) {
                 moves.add(new KillMove(forward.getTurn(), forward.getFrom(), forwardRight, forwardRight.getPiece()));
             }

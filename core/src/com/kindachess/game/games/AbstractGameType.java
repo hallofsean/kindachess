@@ -14,6 +14,6 @@ public abstract class AbstractGameType {
     }
 
     public abstract void render(SpriteBatch batch);
-    
+
     public abstract void dispose();
 }

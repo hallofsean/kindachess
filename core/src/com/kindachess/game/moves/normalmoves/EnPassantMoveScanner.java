@@ -21,7 +21,6 @@ public class EnPassantMoveScanner extends AbstractMoveScanner {
             throw new InvalidBoardTypeException();
         }
 
-
         SingleForwardMoveScanner forwardMove = new SingleForwardMoveScanner();
 
         if (forwardMove.getMoves(piece).size() > 0) {
@@ -32,16 +31,11 @@ public class EnPassantMoveScanner extends AbstractMoveScanner {
             AbstractGridSquare left = start.getLeft();
             AbstractGridSquare right = start.getRight();
 
-            if (left != null
-                    && left.getPiece() != null
-                    && left.getPiece() instanceof PawnPiece
-            ) {
+            if (left != null && left.getPiece() != null && left.getPiece() instanceof PawnPiece) {
                 Move lastMove = left.getPiece().getLastMove();
             }
 
-            if (forwardRight != null
-                    && !forwardRight.isObstructed()
-                    && right.getPiece() != null
+            if (forwardRight != null && !forwardRight.isObstructed() && right.getPiece() != null
                     && right.getPiece().getTeam() != piece.getTeam()) {
                 Move move = new Move(forwardRight.getBoard().getGame().getTurnCount(), startSquare, forwardRight);
                 moves.add(move);

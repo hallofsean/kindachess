@@ -7,6 +7,5 @@ import com.kindachess.game.util.Move;
 import java.util.List;
 
 public abstract class AbstractMoveScanner {
-    public abstract List<Move> getMoves(AbstractPiece piece)
-            throws InvalidBoardTypeException;
+    public abstract List<Move> getMoves(AbstractPiece piece) throws InvalidBoardTypeException;
 }

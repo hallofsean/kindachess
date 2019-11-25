@@ -14,7 +14,8 @@ public class KindaChessGame extends ApplicationAdapter {
     public void create() {
         try {
             game = new NormalGameType();
-        } catch (KindaChessException e) {}
+        } catch (KindaChessException e) {
+        }
         batch = new SpriteBatch();
     }
 

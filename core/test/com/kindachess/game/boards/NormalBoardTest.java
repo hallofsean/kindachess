@@ -46,7 +46,7 @@ public class NormalBoardTest {
         AbstractPiece piece1 = StandardPieceBuilder.create(StandardPieceType.ROOK, square1, Team.WHITE);
         AbstractPiece piece2 = StandardPieceBuilder.create(StandardPieceType.ROOK, square2, Team.WHITE);
         AbstractPiece piece3 = StandardPieceBuilder.create(StandardPieceType.ROOK, square3, Team.WHITE);
-        
+
         board.addPiece(piece1);
         board.addPiece(piece2);
         board.addPiece(piece3);

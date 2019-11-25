@@ -21,14 +21,21 @@ public class NormalGameType extends AbstractGameType {
         // pieces
         //// Black Pieces
         KingPiece blackKing = new KingPiece(board.getSquare(4, 7), Team.BLACK);
-        StandardPiece blackQueen = StandardPieceBuilder.create(StandardPieceType.QUEEN, board.getSquare(3, 7), Team.BLACK);
-        StandardPiece blackKnight1 = StandardPieceBuilder.create(StandardPieceType.KNIGHT, board.getSquare(1, 7), Team.BLACK);
-        StandardPiece blackKnight2 = StandardPieceBuilder.create(StandardPieceType.KNIGHT, board.getSquare(6, 7), Team.BLACK);
-        StandardPiece blackBishop1 = StandardPieceBuilder.create(StandardPieceType.BISHOP, board.getSquare(2, 7), Team.BLACK);
-        StandardPiece blackBishop2 = StandardPieceBuilder.create(StandardPieceType.BISHOP, board.getSquare(5, 7), Team.BLACK);
-        StandardPiece blackRook1 = StandardPieceBuilder.create(StandardPieceType.ROOK, board.getSquare(0, 7), Team.BLACK);
-        StandardPiece blackRook2 = StandardPieceBuilder.create(StandardPieceType.ROOK, board.getSquare(7, 7), Team.BLACK);
-        board.addPiece(blackKing);      
+        StandardPiece blackQueen = StandardPieceBuilder.create(StandardPieceType.QUEEN, board.getSquare(3, 7),
+                Team.BLACK);
+        StandardPiece blackKnight1 = StandardPieceBuilder.create(StandardPieceType.KNIGHT, board.getSquare(1, 7),
+                Team.BLACK);
+        StandardPiece blackKnight2 = StandardPieceBuilder.create(StandardPieceType.KNIGHT, board.getSquare(6, 7),
+                Team.BLACK);
+        StandardPiece blackBishop1 = StandardPieceBuilder.create(StandardPieceType.BISHOP, board.getSquare(2, 7),
+                Team.BLACK);
+        StandardPiece blackBishop2 = StandardPieceBuilder.create(StandardPieceType.BISHOP, board.getSquare(5, 7),
+                Team.BLACK);
+        StandardPiece blackRook1 = StandardPieceBuilder.create(StandardPieceType.ROOK, board.getSquare(0, 7),
+                Team.BLACK);
+        StandardPiece blackRook2 = StandardPieceBuilder.create(StandardPieceType.ROOK, board.getSquare(7, 7),
+                Team.BLACK);
+        board.addPiece(blackKing);
         board.addPiece(blackQueen);
         board.addPiece(blackKnight1);
         board.addPiece(blackKnight2);
@@ -43,13 +50,20 @@ public class NormalGameType extends AbstractGameType {
 
         //// White Pieces
         KingPiece whiteKing = new KingPiece(board.getSquare(4, 0), Team.WHITE);
-        StandardPiece whiteQueen = StandardPieceBuilder.create(StandardPieceType.QUEEN, board.getSquare(3, 0), Team.WHITE);
-        StandardPiece whiteKnight1 = StandardPieceBuilder.create(StandardPieceType.KNIGHT, board.getSquare(1, 0), Team.WHITE);
-        StandardPiece whiteKnight2 = StandardPieceBuilder.create(StandardPieceType.KNIGHT, board.getSquare(6, 0), Team.WHITE);
-        StandardPiece whiteBishop1 = StandardPieceBuilder.create(StandardPieceType.BISHOP, board.getSquare(2, 0), Team.WHITE);
-        StandardPiece whiteBishop2 = StandardPieceBuilder.create(StandardPieceType.BISHOP, board.getSquare(5, 0), Team.WHITE);
-        StandardPiece whiteRook1 = StandardPieceBuilder.create(StandardPieceType.ROOK, board.getSquare(0, 0), Team.WHITE);
-        StandardPiece whiteRook2 = StandardPieceBuilder.create(StandardPieceType.ROOK, board.getSquare(7, 0), Team.WHITE);
+        StandardPiece whiteQueen = StandardPieceBuilder.create(StandardPieceType.QUEEN, board.getSquare(3, 0),
+                Team.WHITE);
+        StandardPiece whiteKnight1 = StandardPieceBuilder.create(StandardPieceType.KNIGHT, board.getSquare(1, 0),
+                Team.WHITE);
+        StandardPiece whiteKnight2 = StandardPieceBuilder.create(StandardPieceType.KNIGHT, board.getSquare(6, 0),
+                Team.WHITE);
+        StandardPiece whiteBishop1 = StandardPieceBuilder.create(StandardPieceType.BISHOP, board.getSquare(2, 0),
+                Team.WHITE);
+        StandardPiece whiteBishop2 = StandardPieceBuilder.create(StandardPieceType.BISHOP, board.getSquare(5, 0),
+                Team.WHITE);
+        StandardPiece whiteRook1 = StandardPieceBuilder.create(StandardPieceType.ROOK, board.getSquare(0, 0),
+                Team.WHITE);
+        StandardPiece whiteRook2 = StandardPieceBuilder.create(StandardPieceType.ROOK, board.getSquare(7, 0),
+                Team.WHITE);
         board.addPiece(whiteKing);
         board.addPiece(whiteQueen);
         board.addPiece(whiteKnight1);

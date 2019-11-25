@@ -34,8 +34,7 @@ public class NormalBoard extends AbstractBoard implements GridBoard {
     }
 
     @Override
-    public List<AbstractSquare> getNeighbours(AbstractSquare square)
-            throws IncorrectSquareTypeException {
+    public List<AbstractSquare> getNeighbours(AbstractSquare square) throws IncorrectSquareTypeException {
         if (!(square instanceof NormalSquare)) {
             throw new IncorrectSquareTypeException();
         }
@@ -101,15 +100,15 @@ public class NormalBoard extends AbstractBoard implements GridBoard {
     public void render(SpriteBatch batch) {
         int i = 0;
         int j = 0;
-        for (NormalSquare[] row: grid) {
+        for (NormalSquare[] row : grid) {
             j = 0;
-            for (NormalSquare square: row) {
+            for (NormalSquare square : row) {
                 square.render(batch, i, j, SQUARE_SIZE);
                 if (getPieceOnSquare(square) != null) {
                     getPieceOnSquare(square).render(batch, i, j, SQUARE_SIZE);
                 }
                 j++;
-            }            
+            }
             i++;
         }
     }

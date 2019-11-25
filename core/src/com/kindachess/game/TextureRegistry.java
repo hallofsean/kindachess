@@ -9,7 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Singleton for storing instance of all textures to ensure all instance can be changed at once and minimise memory usage.
+ * Singleton for storing instance of all textures to ensure all instance can be
+ * changed at once and minimise memory usage.
  */
 public class TextureRegistry {
     private static Logger LOGGER = LoggerFactory.getLogger(TextureRegistry.class);
@@ -77,7 +78,7 @@ public class TextureRegistry {
     }
 
     public void dispose() {
-        for (Texture texture: textures.values()) {
+        for (Texture texture : textures.values()) {
             texture.dispose();
         }
 

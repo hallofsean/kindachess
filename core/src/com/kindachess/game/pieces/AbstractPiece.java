@@ -64,7 +64,7 @@ public abstract class AbstractPiece {
     }
 
     public Move getLastMove() {
-        return moveHistory.get(moveHistory.size()-1);
+        return moveHistory.get(moveHistory.size() - 1);
     }
 
     public void setTexture(String textureName) {
@@ -72,7 +72,7 @@ public abstract class AbstractPiece {
     }
 
     public void render(SpriteBatch batch, int x, int y, int size) {
-        LOGGER.trace("Rendering piece at ({}, {})", x*size, y*size);
-        batch.draw(texture, x*size, y*size, size, size);
+        LOGGER.trace("Rendering piece at ({}, {})", x * size, y * size);
+        batch.draw(texture, x * size, y * size, size, size);
     }
 }

@@ -15,11 +15,11 @@ public class NormalSquare extends AbstractGridSquare {
     @Override
     public void render(SpriteBatch batch, int x, int y, int size) {
         Texture texture;
-        if ((x+y)%2 == 0) {
+        if ((x + y) % 2 == 0) {
             texture = TextureRegistry.getInstance().getTexture("BSquare");
         } else {
             texture = TextureRegistry.getInstance().getTexture("WSquare");
         }
-        batch.draw(texture, x*size, y*size, size, size);
+        batch.draw(texture, x * size, y * size, size, size);
     }
 }
