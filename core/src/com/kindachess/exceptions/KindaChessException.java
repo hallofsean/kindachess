@@ -1,4 +1,4 @@
-package com.kindachess.game.exceptions;
+package com.kindachess.exceptions;
 
 public class KindaChessException extends Exception {
     /**

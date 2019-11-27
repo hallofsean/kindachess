@@ -1,7 +1,7 @@
 package com.kindachess.game.moves.normalmoves;
 
 import com.kindachess.game.boards.GridBoard;
-import com.kindachess.game.exceptions.InvalidBoardTypeException;
+import com.kindachess.exceptions.InvalidBoardTypeException;
 import com.kindachess.game.moves.AbstractMoveScanner;
 import com.kindachess.game.pieces.AbstractPiece;
 import com.kindachess.game.squares.AbstractGridSquare;
@@ -30,9 +30,16 @@ public class KnightMoveScanner extends AbstractMoveScanner {
     }
 
     private List<Move> getUpMoves(AbstractSquare start, AbstractPiece piece) {
-        int turn = start.getBoard().getGame().getTurnCount();
+        int turn = start.getBoard().getGameType().getTurnCount();
         List<Move> moves = new LinkedList<>();
-        AbstractGridSquare up = ((AbstractGridSquare) start).getUp().getUp();
+        AbstractGridSquare up = ((AbstractGridSquare) start).getUp();
+        if (up == null) {
+            return moves;
+        }
+        up = up.getUp();
+        if (up == null) {
+            return moves;
+        }
 
         if (up.getLeft() != null) {
             if (!up.getLeft().isObstructed()) {
@@ -42,7 +49,7 @@ public class KnightMoveScanner extends AbstractMoveScanner {
             }
         }
 
-        if (up.getRight() == null) {
+        if (up.getRight() != null) {
             if (!up.getRight().isObstructed()) {
                 moves.add(new Move(turn, start, up.getRight()));
             } else if (up.getRight().getPiece().getTeam() != piece.getTeam()) {
@@ -54,11 +61,18 @@ public class KnightMoveScanner extends AbstractMoveScanner {
     }
 
     private List<Move> getDownMoves(AbstractSquare start, AbstractPiece piece) {
-        int turn = start.getBoard().getGame().getTurnCount();
+        int turn = start.getBoard().getGameType().getTurnCount();
         List<Move> moves = new LinkedList<>();
-        AbstractGridSquare down = ((AbstractGridSquare) start).getDown().getDown();
+        AbstractGridSquare down = ((AbstractGridSquare) start).getDown();
+        if (down == null) {
+            return moves;
+        }
+        down = down.getDown();
+        if (down == null) {
+            return moves;
+        }
 
-        if (down.getLeft() == null) {
+        if (down.getLeft() != null) {
             if (!down.getLeft().isObstructed()) {
                 moves.add(new Move(turn, start, down.getLeft()));
             } else if (down.getLeft().getPiece().getTeam() != piece.getTeam()) {
@@ -66,7 +80,7 @@ public class KnightMoveScanner extends AbstractMoveScanner {
             }
         }
 
-        if (down.getRight() == null) {
+        if (down.getRight() != null) {
             if (!down.getRight().isObstructed()) {
                 moves.add(new Move(turn, start, down.getRight()));
             } else if (down.getRight().getPiece().getTeam() != piece.getTeam()) {
@@ -78,11 +92,18 @@ public class KnightMoveScanner extends AbstractMoveScanner {
     }
 
     private List<Move> getLeftMoves(AbstractSquare start, AbstractPiece piece) {
-        int turn = start.getBoard().getGame().getTurnCount();
+        int turn = start.getBoard().getGameType().getTurnCount();
         List<Move> moves = new LinkedList<>();
-        AbstractGridSquare left = ((AbstractGridSquare) start).getLeft().getLeft();
+        AbstractGridSquare left = ((AbstractGridSquare) start).getLeft();
+        if (left == null) {
+            return moves;
+        }
+        left = left.getLeft();
+        if (left == null) {
+            return moves;
+        }
 
-        if (left.getDown() == null) {
+        if (left.getDown() != null) {
             if (!left.getDown().isObstructed()) {
                 moves.add(new Move(turn, start, left.getDown()));
             } else if (left.getDown().getPiece().getTeam() != piece.getTeam()) {
@@ -90,7 +111,7 @@ public class KnightMoveScanner extends AbstractMoveScanner {
             }
         }
 
-        if (left.getUp() == null) {
+        if (left.getUp() != null) {
             if (!left.getUp().isObstructed()) {
                 moves.add(new Move(turn, start, left.getUp()));
             } else if (left.getUp().getPiece().getTeam() != piece.getTeam()) {
@@ -102,11 +123,18 @@ public class KnightMoveScanner extends AbstractMoveScanner {
     }
 
     private List<Move> getRightMoves(AbstractSquare start, AbstractPiece piece) {
-        int turn = start.getBoard().getGame().getTurnCount();
+        int turn = start.getBoard().getGameType().getTurnCount();
         List<Move> moves = new LinkedList<>();
-        AbstractGridSquare right = ((AbstractGridSquare) start).getRight().getRight();
+        AbstractGridSquare right = ((AbstractGridSquare) start).getRight();
+        if (right == null) {
+            return moves;
+        }
+        right = right.getRight();
+        if (right == null) {
+            return moves;
+        }
 
-        if (right.getDown() == null) {
+        if (right.getDown() != null) {
             if (!right.getDown().isObstructed()) {
                 moves.add(new Move(turn, start, right.getDown()));
             } else if (right.getDown().getPiece().getTeam() != piece.getTeam()) {
@@ -114,7 +142,7 @@ public class KnightMoveScanner extends AbstractMoveScanner {
             }
         }
 
-        if (right.getUp() == null) {
+        if (right.getUp() != null) {
             if (!right.getUp().isObstructed()) {
                 moves.add(new Move(turn, start, right.getUp()));
             } else if (right.getUp().getPiece().getTeam() != piece.getTeam()) {

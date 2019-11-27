@@ -2,7 +2,7 @@ package com.kindachess.game.pieces;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.Texture;
-import com.kindachess.game.exceptions.InvalidBoardTypeException;
+import com.kindachess.exceptions.InvalidBoardTypeException;
 import com.kindachess.game.moves.AbstractMoveScanner;
 import com.kindachess.game.squares.AbstractSquare;
 import com.kindachess.game.util.Move;
@@ -27,6 +27,7 @@ public abstract class AbstractPiece {
         square = startSquare;
         this.team = team;
         texture = TextureRegistry.getInstance().getTexture(textureName);
+        moveHistory = new CopyOnWriteArrayList<>();
     }
 
     public void addMoveType(AbstractMoveScanner moveType) {
@@ -46,7 +47,7 @@ public abstract class AbstractPiece {
     }
 
     public boolean moveTo(AbstractSquare square) throws InvalidBoardTypeException {
-        moveHistory.add(new Move(this.square.getBoard().getGame().getTurnCount(), this.square, square));
+        moveHistory.add(new Move(this.square.getBoard().getGameType().getTurnCount(), this.square, square));
         this.square = square;
         return true;
     }
@@ -64,7 +65,11 @@ public abstract class AbstractPiece {
     }
 
     public Move getLastMove() {
-        return moveHistory.get(moveHistory.size() - 1);
+        if (moveHistory.size() > 0) {
+            return moveHistory.get(moveHistory.size() - 1);
+        } else {
+            return null;
+        }
     }
 
     public void setTexture(String textureName) {
@@ -74,5 +79,12 @@ public abstract class AbstractPiece {
     public void render(SpriteBatch batch, int x, int y, int size) {
         LOGGER.trace("Rendering piece at ({}, {})", x * size, y * size);
         batch.draw(texture, x * size, y * size, size, size);
+    }
+
+    public void select() throws InvalidBoardTypeException {
+        getSquare().getBoard().unsetAllDestinations();
+        for (Move move: getMoves()) {
+            move.getTo().setAsDestination();
+        }
     }
 }

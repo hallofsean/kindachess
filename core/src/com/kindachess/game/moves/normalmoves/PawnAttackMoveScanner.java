@@ -1,6 +1,6 @@
 package com.kindachess.game.moves.normalmoves;
 
-import com.kindachess.game.exceptions.InvalidBoardTypeException;
+import com.kindachess.exceptions.InvalidBoardTypeException;
 import com.kindachess.game.moves.AbstractMoveScanner;
 import com.kindachess.game.pieces.AbstractPiece;
 import com.kindachess.game.squares.AbstractGridSquare;

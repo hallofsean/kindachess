@@ -1,7 +1,7 @@
 package com.kindachess.game.moves.normalmoves;
 
 import com.kindachess.game.boards.GridBoard;
-import com.kindachess.game.exceptions.InvalidBoardTypeException;
+import com.kindachess.exceptions.InvalidBoardTypeException;
 import com.kindachess.game.moves.AbstractMoveScanner;
 import com.kindachess.game.pieces.AbstractPiece;
 import com.kindachess.game.squares.AbstractGridSquare;
@@ -28,7 +28,7 @@ public class StraightMoveScanner extends AbstractMoveScanner {
     }
 
     private List<Move> getUpMoves(AbstractSquare start) {
-        int turn = start.getBoard().getGame().getTurnCount();
+        int turn = start.getBoard().getGameType().getTurnCount();
         List<Move> moves = new LinkedList<>();
         AbstractGridSquare current = ((AbstractGridSquare) start).getUp();
         while (current != null && !current.isObstructed()) {
@@ -39,7 +39,7 @@ public class StraightMoveScanner extends AbstractMoveScanner {
     }
 
     private List<Move> getDownMoves(AbstractSquare start) {
-        int turn = start.getBoard().getGame().getTurnCount();
+        int turn = start.getBoard().getGameType().getTurnCount();
         List<Move> moves = new LinkedList<>();
         AbstractGridSquare current = ((AbstractGridSquare) start).getDown();
         while (current != null && !current.isObstructed()) {
@@ -50,7 +50,7 @@ public class StraightMoveScanner extends AbstractMoveScanner {
     }
 
     private List<Move> getLeftMoves(AbstractSquare start) {
-        int turn = start.getBoard().getGame().getTurnCount();
+        int turn = start.getBoard().getGameType().getTurnCount();
         List<Move> moves = new LinkedList<>();
         AbstractGridSquare current = ((AbstractGridSquare) start).getLeft();
         while (current != null && !current.isObstructed()) {
@@ -61,7 +61,7 @@ public class StraightMoveScanner extends AbstractMoveScanner {
     }
 
     private List<Move> getRightMoves(AbstractSquare start) {
-        int turn = start.getBoard().getGame().getTurnCount();
+        int turn = start.getBoard().getGameType().getTurnCount();
         List<Move> moves = new LinkedList<>();
         AbstractGridSquare current = ((AbstractGridSquare) start).getRight();
         while (current != null && !current.isObstructed()) {

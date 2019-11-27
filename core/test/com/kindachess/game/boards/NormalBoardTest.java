@@ -1,7 +1,7 @@
 package com.kindachess.game.boards;
 
-import com.kindachess.game.exceptions.KindaChessException;
-import com.kindachess.game.exceptions.SquareNotOnBoardException;
+import com.kindachess.exceptions.KindaChessException;
+import com.kindachess.exceptions.SquareNotOnBoardException;
 import com.kindachess.game.games.AbstractGameType;
 import com.kindachess.game.games.NormalGameType;
 import com.kindachess.game.pieces.AbstractPiece;

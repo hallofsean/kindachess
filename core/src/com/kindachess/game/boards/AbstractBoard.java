@@ -1,8 +1,8 @@
 package com.kindachess.game.boards;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.kindachess.game.exceptions.IncorrectSquareTypeException;
-import com.kindachess.game.exceptions.SquareNotOnBoardException;
+import com.kindachess.exceptions.IncorrectSquareTypeException;
+import com.kindachess.exceptions.SquareNotOnBoardException;
 import com.kindachess.game.games.AbstractGameType;
 import com.kindachess.game.pieces.AbstractPiece;
 import com.kindachess.game.squares.AbstractSquare;
@@ -14,10 +14,10 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public abstract class AbstractBoard {
     private Map<AbstractSquare, AbstractPiece> pieces = new ConcurrentHashMap<>();
-    private AbstractGameType game;
+    private AbstractGameType gameType;
 
     public AbstractBoard(AbstractGameType gameType) {
-        game = gameType;
+        this.gameType = gameType;
     }
 
     public abstract List<AbstractSquare> getNeighbours(AbstractSquare square) throws IncorrectSquareTypeException;
@@ -51,7 +51,13 @@ public abstract class AbstractBoard {
         return pieces.get(square);
     }
 
-    public AbstractGameType getGame() {
-        return game;
+    public AbstractGameType getGameType() {
+        return gameType;
+    }
+
+    public void unsetAllDestinations() {
+        for (AbstractSquare square: getSquares()) {
+            square.unsetAsDestination();
+        }
     }
 }

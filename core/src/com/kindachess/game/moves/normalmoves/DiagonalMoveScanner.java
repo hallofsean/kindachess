@@ -1,7 +1,7 @@
 package com.kindachess.game.moves.normalmoves;
 
 import com.kindachess.game.boards.GridBoard;
-import com.kindachess.game.exceptions.InvalidBoardTypeException;
+import com.kindachess.exceptions.InvalidBoardTypeException;
 import com.kindachess.game.moves.AbstractMoveScanner;
 import com.kindachess.game.pieces.AbstractPiece;
 import com.kindachess.game.squares.AbstractGridSquare;
@@ -30,7 +30,7 @@ public class DiagonalMoveScanner extends AbstractMoveScanner {
 
     private List<Move> getUpLeftMoves(AbstractSquare start) {
         List<Move> moves = new LinkedList<>();
-        int turn = start.getBoard().getGame().getTurnCount();
+        int turn = start.getBoard().getGameType().getTurnCount();
 
         AbstractGridSquare currentSquare = (AbstractGridSquare) start;
         currentSquare = currentSquare.getUp();
@@ -53,7 +53,7 @@ public class DiagonalMoveScanner extends AbstractMoveScanner {
 
     private List<Move> getUpRightMoves(AbstractSquare start) {
         List<Move> moves = new LinkedList<>();
-        int turn = start.getBoard().getGame().getTurnCount();
+        int turn = start.getBoard().getGameType().getTurnCount();
 
         AbstractGridSquare currentSquare = (AbstractGridSquare) start;
         currentSquare = currentSquare.getUp();
@@ -76,7 +76,7 @@ public class DiagonalMoveScanner extends AbstractMoveScanner {
 
     private List<Move> getDownLeftMoves(AbstractSquare start) {
         List<Move> moves = new LinkedList<>();
-        int turn = start.getBoard().getGame().getTurnCount();
+        int turn = start.getBoard().getGameType().getTurnCount();
 
         AbstractGridSquare currentSquare = (AbstractGridSquare) start;
         currentSquare = currentSquare.getDown();
@@ -99,7 +99,7 @@ public class DiagonalMoveScanner extends AbstractMoveScanner {
 
     private List<Move> getDownRightMoves(AbstractSquare start) {
         List<Move> moves = new LinkedList<>();
-        int turn = start.getBoard().getGame().getTurnCount();
+        int turn = start.getBoard().getGameType().getTurnCount();
 
         AbstractGridSquare currentSquare = (AbstractGridSquare) start;
         currentSquare = currentSquare.getDown();

@@ -12,4 +12,10 @@ public interface GridBoard {
     public AbstractGridSquare getRight(AbstractGridSquare square);
 
     public AbstractGridSquare getSquare(int x, int y);
+
+    public int getSquareSize();
+
+    public int getHeight();
+
+    public int getWidth();
 }

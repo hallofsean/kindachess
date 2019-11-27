@@ -2,7 +2,7 @@ package com.kindachess.game.squares;
 
 import com.kindachess.game.boards.AbstractBoard;
 import com.kindachess.game.boards.GridBoard;
-import com.kindachess.game.exceptions.IncorrectSquareTypeException;
+import com.kindachess.exceptions.IncorrectSquareTypeException;
 
 public abstract class AbstractGridSquare extends AbstractSquare {
     private int x, y;

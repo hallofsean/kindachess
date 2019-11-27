@@ -1,7 +1,7 @@
 package com.kindachess.game.moves.normalmoves;
 
 import com.kindachess.game.boards.GridBoard;
-import com.kindachess.game.exceptions.InvalidBoardTypeException;
+import com.kindachess.exceptions.InvalidBoardTypeException;
 import com.kindachess.game.moves.AbstractMoveScanner;
 import com.kindachess.game.pieces.AbstractPiece;
 import com.kindachess.game.squares.AbstractGridSquare;
@@ -28,7 +28,7 @@ public class SingleForwardMoveScanner extends AbstractMoveScanner {
             forward = ((AbstractGridSquare) start).getDown();
         }
         if (forward != null) {
-            moves.add(new Move(forward.getBoard().getGame().getTurnCount(), start, forward));
+            moves.add(new Move(forward.getBoard().getGameType().getTurnCount(), start, forward));
         }
 
         return moves;

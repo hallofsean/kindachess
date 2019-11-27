@@ -1,7 +1,7 @@
 package com.kindachess.game.boards;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.kindachess.game.exceptions.IncorrectSquareTypeException;
+import com.kindachess.exceptions.IncorrectSquareTypeException;
 import com.kindachess.game.games.AbstractGameType;
 import com.kindachess.game.squares.AbstractGridSquare;
 import com.kindachess.game.squares.AbstractSquare;
@@ -19,7 +19,7 @@ public class NormalBoard extends AbstractBoard implements GridBoard {
         super(gameType);
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                grid[i][j] = new NormalSquare(this, i, j);
+                grid[i][j] = new NormalSquare(this, i, j, SQUARE_SIZE);
             }
         }
     }
@@ -62,20 +62,20 @@ public class NormalBoard extends AbstractBoard implements GridBoard {
 
     @Override
     public AbstractGridSquare getUp(AbstractGridSquare square) {
-        if (square.getY() <= 0) {
-            return null;
-        }
-
-        return grid[square.getX()][square.getY() - 1];
-    }
-
-    @Override
-    public AbstractGridSquare getDown(AbstractGridSquare square) {
         if (square.getY() >= 7) {
             return null;
         }
 
         return grid[square.getX()][square.getY() + 1];
+    }
+
+    @Override
+    public AbstractGridSquare getDown(AbstractGridSquare square) {
+        if (square.getY() <= 0) {
+            return null;
+        }
+
+        return grid[square.getX()][square.getY() - 1];
     }
 
     @Override
@@ -103,7 +103,7 @@ public class NormalBoard extends AbstractBoard implements GridBoard {
         for (NormalSquare[] row : grid) {
             j = 0;
             for (NormalSquare square : row) {
-                square.render(batch, i, j, SQUARE_SIZE);
+                square.render(batch, i, j);
                 if (getPieceOnSquare(square) != null) {
                     getPieceOnSquare(square).render(batch, i, j, SQUARE_SIZE);
                 }
@@ -116,5 +116,19 @@ public class NormalBoard extends AbstractBoard implements GridBoard {
     @Override
     public AbstractGridSquare getSquare(int x, int y) {
         return grid[x][y];
+    }
+
+    @Override
+    public int getSquareSize() {
+        return SQUARE_SIZE;
+    }
+
+    @Override
+    public int getHeight() {
+        return 8;
+    }
+
+    public int getWidth() {
+        return 8;
     }
 }

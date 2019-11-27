@@ -61,6 +61,8 @@ public class TextureRegistry {
         // Squares
         addTexture("WSquare", "squares/white.png");
         addTexture("BSquare", "squares/black.png");
+        addTexture("SSquare", "squares/selected.png");
+        addTexture("MSquare", "squares/move.png");
     }
 
     private void addTexture(String name, String location) {
