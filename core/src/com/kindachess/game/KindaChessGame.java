@@ -11,7 +11,6 @@ import com.kindachess.input.Controls;
 public class KindaChessGame extends ApplicationAdapter {
     private AbstractGameType game;
     private SpriteBatch batch;
-    private Controls controls;
 
     @Override
     public void create() {

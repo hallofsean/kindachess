@@ -1,6 +1,6 @@
 package com.kindachess.game.moves.normalmoves;
 
-import com.kindachess.game.boards.GridBoard;
+import com.kindachess.game.boards.AbstractGridBoard;
 import com.kindachess.exceptions.InvalidBoardTypeException;
 import com.kindachess.game.moves.AbstractMoveScanner;
 import com.kindachess.game.pieces.AbstractPiece;
@@ -16,7 +16,7 @@ public class DiagonalMoveScanner extends AbstractMoveScanner {
     @Override
     public List<Move> getMoves(AbstractPiece piece) throws InvalidBoardTypeException {
         AbstractSquare start = piece.getSquare();
-        if (!(start.getBoard() instanceof GridBoard)) {
+        if (!(start.getBoard() instanceof AbstractGridBoard)) {
             throw new InvalidBoardTypeException();
         }
         List<Move> moves = new LinkedList<>();

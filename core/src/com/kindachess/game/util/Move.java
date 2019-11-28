@@ -24,4 +24,17 @@ public class Move {
     public AbstractSquare getTo() {
         return to;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Move)) {
+            return false;
+        }
+
+        boolean sameTurn = turn == ((Move) obj).getTurn();
+        boolean sameFrom = from == ((Move) obj).getFrom();
+        boolean sameTo = to == ((Move) obj).getTo();
+
+        return sameTurn && sameFrom && sameTo;
+    }
 }

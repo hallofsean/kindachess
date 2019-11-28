@@ -1,7 +1,7 @@
 package com.kindachess.game.squares;
 
 import com.kindachess.game.boards.AbstractBoard;
-import com.kindachess.game.boards.GridBoard;
+import com.kindachess.game.boards.AbstractGridBoard;
 import com.kindachess.exceptions.IncorrectSquareTypeException;
 
 public abstract class AbstractGridSquare extends AbstractSquare {
@@ -9,7 +9,7 @@ public abstract class AbstractGridSquare extends AbstractSquare {
 
     public AbstractGridSquare(AbstractBoard board, int x, int y) throws IncorrectSquareTypeException {
         super(board);
-        if (!(board instanceof GridBoard)) {
+        if (!(board instanceof AbstractGridBoard)) {
             throw new IncorrectSquareTypeException();
         }
         this.x = x;
@@ -30,18 +30,18 @@ public abstract class AbstractGridSquare extends AbstractSquare {
     }
 
     public AbstractGridSquare getUp() {
-        return ((GridBoard) getBoard()).getUp(this);
+        return ((AbstractGridBoard) getBoard()).getUp(this);
     }
 
     public AbstractGridSquare getDown() {
-        return ((GridBoard) getBoard()).getDown(this);
+        return ((AbstractGridBoard) getBoard()).getDown(this);
     }
 
     public AbstractGridSquare getLeft() {
-        return ((GridBoard) getBoard()).getLeft(this);
+        return ((AbstractGridBoard) getBoard()).getLeft(this);
     }
 
     public AbstractGridSquare getRight() {
-        return ((GridBoard) getBoard()).getRight(this);
+        return ((AbstractGridBoard) getBoard()).getRight(this);
     }
 }

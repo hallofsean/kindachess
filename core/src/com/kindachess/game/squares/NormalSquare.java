@@ -3,7 +3,7 @@ package com.kindachess.game.squares;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.kindachess.game.TextureRegistry;
 import com.kindachess.game.boards.AbstractBoard;
-import com.kindachess.game.boards.GridBoard;
+import com.kindachess.game.boards.AbstractGridBoard;
 import com.kindachess.game.util.CoordinateConverter;
 import com.kindachess.exceptions.IncorrectSquareTypeException;
 import com.kindachess.exceptions.InvalidBoardTypeException;
@@ -44,7 +44,7 @@ public class NormalSquare extends AbstractGridSquare implements LeftClickObserve
 
     @Override
     public void alertLeftClick(int screenX, int screenY) {
-        int[] boardCoordinates = CoordinateConverter.screenToBoardCoordinates((GridBoard) getBoard(), screenX, screenY);
+        int[] boardCoordinates = CoordinateConverter.screenToBoardCoordinates((AbstractGridBoard) getBoard(), screenX, screenY);
         if (boardCoordinates[0] == getX() && boardCoordinates[1] == getY()) {
             LOGGER.debug("Square at {}, {} selected", boardCoordinates[0], boardCoordinates[1]);
             if (getPiece() != null) {

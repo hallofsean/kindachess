@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-public class NormalBoard extends AbstractBoard implements GridBoard {
+public class NormalBoard extends AbstractGridBoard {
     private NormalSquare[][] grid = new NormalSquare[8][8]; // 0,0 is top-left
     public static final int SQUARE_SIZE = 50;
 

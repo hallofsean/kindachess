@@ -1,6 +1,5 @@
 package com.kindachess.input;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
